@@ -34,19 +34,24 @@
       ctx.lineCap = 'round'; // Mower is circular
       ctx.fillStyle = 'red';
       ctx.strokeStyle = 'red';
+
+      var prevPos = {x:50, y:50};
+
       canvas.addEventListener("mousedown", function(event) {
         console.log("Mouse down", event.which);
         var pos = relativePos(event, canvas);
         console.log(pos);
         ctx.beginPath();
-        ctx.moveTo(pos.x, pos.y);
+        ctx.moveTo(prevPos.x, prevPos.y);
         ctx.lineTo(pos.x, pos.y);
         ctx.stroke();
         updateDone();
+        prevPos = pos;
       });
-      canvas.addEventListener("mouseup", function(event) {
-        console.log("Mouse up", event.which);
-      });
+
+      // canvas.addEventListener("mouseup", function(event) {
+      //   console.log("Mouse up", event.which);
+      // });
     </script>
   </body>
 </html>
